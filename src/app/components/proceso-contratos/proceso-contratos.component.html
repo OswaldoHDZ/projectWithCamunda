@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="py-5 text-center">
+        <h1>Inicio Proceso Contratos</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+            <form class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <!-- <label for="email">Email <span class="text-muted">(Optional)</span></label> -->
+                    <label for="text">Empresa</label>
+                    <input  type="text" class="form-control" id="empresa" [(ngModel)]='empresa'>
+                    <!-- <div class="invalid-feedback">
+                        Please enter a valid email address for shipping updates.
+                    </div> -->
+                </div>
+                <div class="mb-3">
+                    <label for="text">Area Solicitante</label>
+                    <input type="text" class="form-control" id="area_solicitante">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre_solicitante">Nombre Solicitante</label>
+                        <input type="text" class="form-control" id="nombre_solicitante">
+                        <!-- <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div> -->
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre_responsable">Nombre Responsable Area</label>
+                        <input type="text" class="form-control" id="nombre_responsable" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="representante_legal">Nombre Rep/Apoderado legal</label>
+                        <input type="text" class="form-control" id="representante_legal">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre_contraparte">Nombre contraparte juridica</label>
+                        <input type="text" class="form-control" id="nombre_contraparte">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="rfc_contraparte">RFC contraparte juridica</label>
+                        <input type="text" class="form-control" id="rfc_contraparte">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="domicilio_contraparte">Domicilio contraparte</label>
+                        <input type="text" class="form-control" id="domicilio_contraparte">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="antecedentes">Antecedentes</label>
+                        <input type="text" class="form-control" id="antecedentes">
+                    </div>
+                    
+                </div>
+
+                <div class="mb-3">
+                    <label for="tipo_instrumento">Tipo de instrumento</label>
+                    <input type="text" class="form-control" id="tipo_instrumento">
+                </div>
+
+                <div class="mb-3">
+                    <label for="vigencia">Vigencia</label>
+                    <input type="text" class="form-control" id="vigencia">
+                </div>
+                <div class="mb-3">
+                    <label for="objeto">Objeto</label>
+                    <input type="text" class="form-control" id="objeto">
+                </div>
+                <div class="mb-3">
+                    <label for="contraprestacion">Contraprestacion</label>
+                    <input type="text" class="form-control" id="contraprestacion">
+                </div>
+
+                <br>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                <hr class="mb-4">
+            </form>
+        </div>
+    </div>
+
+</div>
