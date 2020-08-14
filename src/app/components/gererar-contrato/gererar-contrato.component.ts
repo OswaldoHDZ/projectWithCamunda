@@ -10,7 +10,19 @@ import { ServiceService } from "src/app/services/service.service"
 })
 export class GererarContratoComponent implements OnInit {
 
-  public empresa : string;
+  public empresa: string;
+  public area_solicitante: string;
+  public nombre_solicitante: string;
+  public nombre_responsable_area: string;
+  public nombre_apoderado_legal: string;
+  public nombre_contraparte_juridica: string;
+  public rfc_contraparte: string;
+  public domicilio_contraparte: string;
+  public antecedentes: string;
+  public tipo_instrumento: string;
+  public vigencia: string;
+  public objeto: string;
+  public contraprestacion: string;
 
 
   public exito: string;
@@ -18,12 +30,13 @@ export class GererarContratoComponent implements OnInit {
   public item: string;
   public variables = {
     "variables": {
-      "amount": {
-        "value": 123456789,
-        "type": "long"
+      "empresa": {
+        "value": this.empresa,
+        "type": "String"
       },
-      "item": {
-        "value": "Prueba"
+      "area_solicitante": {
+        "value": this.area_solicitante,
+        "type": "String"
       }
     }
   }
@@ -36,22 +49,18 @@ export class GererarContratoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  mandaInformacion() {
-    console.log(this.amount)
-    console.log(this.item)
-    console.log("123456")
-    this.variables.variables.amount.value = this.amount;
-    this.variables.variables.item.value = this.item;
-    this.data.getAllbooks(this.variables).subscribe(
-      data => {
-        console.log(data)
-      },
-      err => {
-        console.log(err.error.message);
+  // mandaInformacion() {
 
-      }
-    );
+  //   this.data.crearProcesoGeneraContrato(this.variables).subscribe(
+  //     data => {
+  //       console.log(data)
+  //     },
+  //     err => {
+  //       console.log(err.error.message);
 
-  }
+  //     }
+  //   );
+
+  // }
 
 }

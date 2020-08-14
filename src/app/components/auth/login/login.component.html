@@ -1,28 +1,24 @@
 <mat-card>
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
-        <form>
-            <p>
-                <mat-form-field>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1"><mat-icon>account_circle</mat-icon></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                      </div>
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" id="basic-addon1"><mat-icon>vpn_key</mat-icon></span>
-                        </div>
-                        <input type="password" class="form-control" placeholder="Contraseña"  aria-describedby="basic-addon1">
-                      </div>
-                </mat-form-field>
-            </p>
-            <button type="submit" mat-raised-button color="primary">Login</button>
+        <form >
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                        <mat-icon>account_circle</mat-icon>
+                    </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Nombre de usuario" [(ngModel)]="userNanme" name="userNanme">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                        <mat-icon>vpn_key</mat-icon>
+                    </span>
+                </div>
+                <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="pass" name="password">
+            </div>
+            <button (click)="onLogin()" type="button" mat-raised-button color="primary">Login</button>
         </form>
     </mat-card-content>
 </mat-card>
