@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from "src/app/services/service.service"
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-gererar-contrato',

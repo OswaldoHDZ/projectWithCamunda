@@ -23,8 +23,24 @@ export class ServiceService {
     console.log(variabe);
     return this.http.post(url_api, variabe, httpOption);
   }
-
-  crearProcesoGeneraContrato(variables2: { variables: { empresa: { value: string; type: string; }; area_solicitante: { value: string; type: string; }; }; }) {
+  crearProcesoGeneraContrato( variables2 :
+    {
+      variables:
+      {
+        empresa : { value : string; type: string;};
+        area_solicitante : { value : string; type: string;};
+        nombre_responsable_area : { value : string; type: string;};
+        nombre_apoderado_legal : { value : string; type: string;};
+        nombre_contraparte_juridica : { value : string; type: string;};
+        rfc_contraparte : { value : string; type: string;};
+        domicilio_contraparte : { value : string; type: string;};
+        antecedentes : { value : string; type: string;};
+        tipo_instrumento : { value : string; type: string;};
+        vigencia : { value : string; type: string;};
+        objeto : { value : string; type: string;};
+        contraprestacion : { value : string; type: string;};
+      };
+    }): Observable<any> {
     console.log(variables2);
     return this.http.post(url_api_contrato, variables2, httpOption);
   }

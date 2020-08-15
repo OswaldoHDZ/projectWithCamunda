@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ReactiveFormsModule } from '@angular/forms';
 //componentes
 import { SliderComponent } from './components/slider/slider.component';
 
@@ -34,6 +34,9 @@ import { GererarContratoComponent } from './components/gererar-contrato/gererar-
 import { LoginComponent } from './components/auth/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 
+//Componentes 
+// ES6 Modules or TypeScript sweetalert2
+ 
 const rutas : Routes = [
   { path : 'proceso_contratos', component : ProcesoContratosComponent},
   { path : '', component : HomeComponent},
@@ -60,6 +63,7 @@ const rutas : Routes = [
     AdminComponent
   ],
   imports: [
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatCardModule,
     FormsModule,
