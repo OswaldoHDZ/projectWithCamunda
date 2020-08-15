@@ -15,13 +15,20 @@
             </mat-toolbar>
 
             <mat-sidenav-container   class="example-sidenav-container">
-                <mat-sidenav [opened]="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                    [fixedInViewport]="mobileQuery.matches" >
+                <mat-sidenav [opened]="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" >
                     <mat-nav-list>
-                        <a mat-list-item [routerLink]='nav.route' *ngFor="let nav of fillerNav">
-                            <mat-icon> {{nav.icon}} </mat-icon>
-                            {{nav.name}}
-                        </a>
+                        <ng-container  *ngFor="let nav of fillerNav">
+                            <mat-list-item [routerLink]='nav.route'>
+                                <mat-icon matBadge="{{nav.cantidad}}" matBadgeColor="warn">{{nav.icon}}</mat-icon> {{nav.name}}
+                            </mat-list-item>
+
+                            <mat-list style="margin-left:30px;">
+                                <div *ngFor="let contrato of nav.contratos">
+                                    <mat-list-item> {{contrato.created}}</mat-list-item>
+                                </div>
+                            </mat-list>
+
+                        </ng-container>
                     </mat-nav-list>
                 </mat-sidenav>
 
@@ -38,3 +45,5 @@
               Use of this source code is governed by an MIT-style license that
               can be found in the LICENSE file at http://angular.io/license -->
 </section>
+
+

@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs/internal/Observable'
+import { ContratoInterface } from '../shared/models/contrato.interface'
 
 
 const httpOption = {
@@ -10,6 +11,10 @@ const httpOption = {
 
 const url_api = "/engine-rest/process-definition/key/payment-retrieval/start/"
 const url_api_contrato = "/engine-rest/process-definition/key/ProcesoContratos/start/"
+
+const url_api_get_cantidad_contatos_a_revisar = '/engine-rest/task/count?processDefinitionKey=ProcesoContratos'
+
+const url_api_info_revInicial = '/engine-rest/task?processDefinitionKey=ProcesoContratos'
 
 
 @Injectable()
@@ -23,6 +28,17 @@ export class ServiceService {
     console.log(variabe);
     return this.http.post(url_api, variabe, httpOption);
   }
+
+
+  obtenerCantidadRevinicial(): Observable<any> {
+    return this.http.get(url_api_get_cantidad_contatos_a_revisar,httpOption);
+  }
+  getInfoContrato():Observable<any> {
+    return this.http.get(url_api_info_revInicial,httpOption) ;
+  }
+
+
+
   crearProcesoGeneraContrato( variables2 :
     {
       variables:

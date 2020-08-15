@@ -17,6 +17,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatBadgeModule} from '@angular/material/badge';
 
 //Componentes dentro 
 import { ProcesoContratosComponent } from './components/proceso-contratos/proceso-contratos.component';
@@ -63,9 +65,11 @@ const rutas : Routes = [
     AdminComponent
   ],
   imports: [
+    MatBadgeModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatCardModule,
+    MatExpansionModule,
     FormsModule,
     HttpClientModule,
     MatToolbarModule,
@@ -79,6 +83,7 @@ const rutas : Routes = [
     RouterModule.forRoot(rutas)
   ],
   exports: [
+    MatBadgeModule,
     FormsModule ,
     MatSliderModule,
     MatFormFieldModule,
