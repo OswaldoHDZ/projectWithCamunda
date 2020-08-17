@@ -14,25 +14,36 @@
                 </button>
             </mat-toolbar>
 
-            <mat-sidenav-container   class="example-sidenav-container">
-                <mat-sidenav [opened]="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" >
+            <mat-sidenav-container class="example-sidenav-container">
+                <mat-sidenav [opened]="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                    [fixedInViewport]="mobileQuery.matches">
                     <mat-nav-list>
-                        <ng-container  *ngFor="let nav of fillerNav">
-                            <mat-list-item [routerLink]='nav.route'>
-                                <mat-icon matBadge="{{nav.cantidad}}" matBadgeColor="warn">{{nav.icon}}</mat-icon> {{nav.name}}
+                        <ng-container *ngFor="let nav of fillerNav">
+                            <mat-list-item >
+                                <mat-icon matBadge="{{nav.cantidad}}" matBadgeColor="warn">{{nav.icon}}</mat-icon>
+                                {{nav.name}}
                             </mat-list-item>
 
                             <mat-list style="margin-left:30px;">
-                                <div *ngFor="let contrato of nav.contratos">
-                                    <mat-list-item> {{contrato.created}}</mat-list-item>
+                                <div *ngFor="let tramite of nav.tramites">
+                                    <mat-list-item [routerLink]='tramite.route'>
+                                        <mat-icon matBadgeColor="warn">{{tramite.icon}}</mat-icon> {{tramite.name}}
+                                    </mat-list-item>
                                 </div>
                             </mat-list>
 
+                            <mat-list style="margin-left:30px;">
+                                <div *ngFor="let progreso of nav.progresos">
+                                    <mat-list-item >
+                                        <mat-icon matBadgeColor="warn">label_important</mat-icon> {{progreso.name}}
+                                    </mat-list-item>
+                                </div>
+                            </mat-list>
                         </ng-container>
                     </mat-nav-list>
                 </mat-sidenav>
 
-                <mat-sidenav-content >
+                <mat-sidenav-content>
                     <router-outlet></router-outlet>
                 </mat-sidenav-content>
             </mat-sidenav-container>
@@ -45,5 +56,3 @@
               Use of this source code is governed by an MIT-style license that
               can be found in the LICENSE file at http://angular.io/license -->
 </section>
-
-

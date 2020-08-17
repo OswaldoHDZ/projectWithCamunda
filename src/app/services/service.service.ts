@@ -17,6 +17,8 @@ const url_api_get_cantidad_contatos_a_revisar = '/engine-rest/task/count?process
 const url_api_info_revInicial = '/engine-rest/task?processDefinitionKey=ProcesoContratos'
 
 
+const url_api_obtener_Info_porinstancia =  "/engine-rest/process-instance/2ea28dc8-dec5-11ea-9eb7-287fcfe23944/variables"
+
 @Injectable()
 export class ServiceService {
 
@@ -29,7 +31,10 @@ export class ServiceService {
     return this.http.post(url_api, variabe, httpOption);
   }
 
-
+  getVriablesPorId():Observable<any>{
+    const url_api = "/engine-rest/process-instance/2ea28dc8-dec5-11ea-9eb7-287fcfe23944/variables"
+    return this.http.get(url_api,httpOption);
+  }
   obtenerCantidadRevinicial(): Observable<any> {
     return this.http.get(url_api_get_cantidad_contatos_a_revisar,httpOption);
   }

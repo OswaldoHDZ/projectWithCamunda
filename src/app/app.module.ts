@@ -35,6 +35,7 @@ import { ModificacionSolicitudComponent } from './components/modificacion-solici
 import { GererarContratoComponent } from './components/gererar-contrato/gererar-contrato.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ContratoComponent } from './components/Status/contrato/contrato.component';
 
 //Componentes 
 // ES6 Modules or TypeScript sweetalert2
@@ -62,7 +63,8 @@ const rutas : Routes = [
     ModificacionSolicitudComponent,
     GererarContratoComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    ContratoComponent
   ],
   imports: [
     MatBadgeModule,
