@@ -47,7 +47,8 @@ const rutas : Routes = [
   { path : 'SolicitudProcesoContratos-2', component : RevisionLegalComponent},
   { path : 'SolicitudProcesoContratos-3', component : ModificacionSolicitudComponent},
   { path : 'SolicitudProcesoContratos-4', component : GererarContratoComponent},
-  { path : 'login', component : LoginComponent}
+  { path : 'login', component : LoginComponent},
+  { path : 'contrato/:id', component : ContratoComponent}
 ]
 
 
@@ -85,6 +86,7 @@ const rutas : Routes = [
     RouterModule.forRoot(rutas)
   ],
   exports: [
+    RouterModule,
     MatBadgeModule,
     FormsModule ,
     MatSliderModule,

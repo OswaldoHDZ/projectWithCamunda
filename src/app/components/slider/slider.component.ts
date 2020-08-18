@@ -10,10 +10,12 @@ import { ServiceService } from "src/app/services/service.service"
   styleUrls: ['./slider.component.css']
 })
 export class SliderComponent implements OnInit {
-
+  names : string [];
   public cantidadAPI;
   public infoContratos;
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataSvc: ServiceService) {
+
+    this.names = ['Oswaldo','Josue']
     this.mobileQuery = media.matchMedia('(max-width: 800px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -29,8 +31,13 @@ export class SliderComponent implements OnInit {
     // this.dataSvc.getInfoContrato().subscribe(data => console.log(this.listaDeTramites[0].contratos = data));
     // this.dataSvc.getInfoContrato().subscribe(data => console.log(this.tramitesEnprogreso[0].contratos = data[0].created));
 
-    this.dataSvc.getInfoContrato().subscribe(data => console.log(this.fillerNav[1].progresos  =  data));
-    this.dataSvc.getInfoContrato().subscribe(data => console.log(this.fillerNav[3].progresos  =  data));
+    this.dataSvc.getInfoContrato().subscribe(data => console.log(this.fillerNav[1].progresos = data));
+    this.dataSvc.getInfoContrato().subscribe(data => console.log(this.fillerNav[3].progresos = data));
+
+
+    // this.dataSvc.getVariablesPorId().subscribe(data => console.log("HOLAMUNDA", data));
+
+
   }
   // fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
@@ -44,21 +51,34 @@ export class SliderComponent implements OnInit {
   //   { name: " Generar contrato", route: "SolicitudProcesoContratos-4", icon: 'check_circle' }
   // ]
 
-  listaDeTramites  = [
-    { name: "Inicio Proceso Contratos", route: "proceso_contratos", icon: 'description'}
+  listaDeTramites = [
+    { name: "Inicio Proceso Contratos", route: "proceso_contratos", icon: 'description' }
   ]
+
+  listaDeTramitesQuePuedenAtenderse = { route: "contrato", icon: 'description' };
+  
 
   tramitesQuePuedenAtendence = [
   ]
   nombreProgreso = "Nombre"
 
   fillerNav = [
-    { name: " Trámites", route: "", icon: 'assignment_ind', tramites : this.listaDeTramites },
-    { name: " Trámites en proceso", route: "", icon: 'hourglass_empty', progresos : [] },
+    { name: " Trámites", route: "", icon: 'assignment_ind', tramites: this.listaDeTramites },
+    { name: " Trámites en proceso", route: "", icon: 'hourglass_empty', progresos: [] },
     { name: " Requieren atención", route: "", icon: 'assignment_late', cantidad: 1, contratos: [] },
-    { name: " Pueden atenderse", route: "", icon: 'assignment_turned_in' , tramites : this.tramitesQuePuedenAtendence }
+    { name: " Pueden atenderse", route: "", icon: 'assignment_turned_in', tramites: this.tramitesQuePuedenAtendence }
   ]
 
+
+  public corporationObj;
+
+  
+  HelloCorp(value :string) {
+    console.log("My input: ",value);
+    this.dataSvc.pasarIDdeContrato(value);   
+  }
+  
+  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   private _mobileQueryListener: () => void;
 
 

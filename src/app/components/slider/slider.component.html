@@ -19,7 +19,7 @@
                     [fixedInViewport]="mobileQuery.matches">
                     <mat-nav-list>
                         <ng-container *ngFor="let nav of fillerNav">
-                            <mat-list-item >
+                            <mat-list-item>
                                 <mat-icon matBadge="{{nav.cantidad}}" matBadgeColor="warn">{{nav.icon}}</mat-icon>
                                 {{nav.name}}
                             </mat-list-item>
@@ -32,19 +32,28 @@
                                 </div>
                             </mat-list>
 
-                            <mat-list style="margin-left:30px;">
-                                <div *ngFor="let progreso of nav.progresos">
-                                    <mat-list-item >
+                            <!-- ----------------------------------------------------------------------------------                            -->
+                            <mat-selection-list #progresos [multiple]="false" style="margin-left:15px;">
+                                <mat-list-option (click)="HelloCorp(progresos.selectedOptions.selected[0]?.value.id)"
+                                    *ngFor="let progreso of nav.progresos" [value]="progreso">
+                                    
+
+                                        <!-- <mat-list-item [routerLink]='listaDeTramitesQuePuedenAtenderse.route'> -->
+                                    <mat-list-item [routerLink]="['/'+listaDeTramitesQuePuedenAtenderse.route+'/', progresos.selectedOptions.selected[0]?.value.id]">
+
                                         <mat-icon matBadgeColor="warn">label_important</mat-icon> {{progreso.name}}
                                     </mat-list-item>
-                                </div>
-                            </mat-list>
+                                </mat-list-option>
+                            </mat-selection-list>
+                            <!-- ----------------------------------------------------------------------------------                            -->
+
+
                         </ng-container>
                     </mat-nav-list>
                 </mat-sidenav>
 
                 <mat-sidenav-content>
-                    <router-outlet></router-outlet>
+                    <router-outlet ></router-outlet>
                 </mat-sidenav-content>
             </mat-sidenav-container>
     </div>
