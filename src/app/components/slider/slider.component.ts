@@ -42,7 +42,7 @@ export class SliderComponent implements OnInit {
     // this.dataSvc.getInfoContrato().subscribe(data => console.log(this.tramitesEnprogreso[0].contratos = data[0].created));
 
     this.dataSvc.getInfoContrato().subscribe(data => console.log("Estos son los progresos ",this.fillerNav[1].progresos = data));
-    this.dataSvc.getInfoContrato().subscribe(data => console.log(this.fillerNav[3].progresos = data));
+    // this.dataSvc.getInfoContrato().subscribe(data => console.log(this.fillerNav[3].progresos = data));
 
 
     // this.dataSvc.getVariablesPorId().subscribe(data => console.log("HOLAMUNDA", data));
@@ -69,6 +69,9 @@ export class SliderComponent implements OnInit {
   listaDeTramites = [
     { name: "Inicio Proceso Contratos", route: "proceso_contratos", icon: 'description' }
   ]
+  tramitePuedeAtendence = [
+    { name: "Inicio Proceso Contratos", route: "proceso_contratos", icon: 'description' }
+  ]
 
   listaDeTramitesQuePuedenAtenderse = { route: "contrato", icon: 'description' };
 
@@ -91,13 +94,9 @@ export class SliderComponent implements OnInit {
 
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   private _mobileQueryListener: () => void;
-
-
-
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-
   // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
   shouldRun = true;
 

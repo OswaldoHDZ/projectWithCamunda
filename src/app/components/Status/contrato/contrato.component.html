@@ -1,1 +1,94 @@
-{{ mensaje }}
+<div class="container">
+    <div class="py-5 text-center">
+        <h1>Status de solicitud de contrato</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+            <form  class="needs-validation" >
+                <div class="mb-3">
+                    <label for="text">Empresa</label>
+                    <input readonly type="text" class="form-control" id="empresa" value={{empresa}}  value="hola">
+                </div>
+                <div class="mb-3">
+                    <label for="text">Area Solicitante</label>
+                    <input readonly type="text" class="form-control" id="area_solicitante" value={{area_solicitante}} name="area_solicitante">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre_solicitante">Nombre Solicitante</label>
+                        <input readonly  type="text" class="form-control" id="nombre_solicitante" value={{nombre_solicitante}} name="nombre_solicitante" >
+                        <!-- <div class="invalid-feedback">
+                            Valid first name is required.
+                        </div> -->
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre_responsable">Nombre Responsable Area</label>
+                        <input readonly type="text" class="form-control" id="nombre_responsable_area" value={{nombre_responsable_area}} name="nombre_responsable_area">
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="representante_legal">Nombre Rep/Apoderado legal</label>
+                        <input readonly type="text" class="form-control" id="nombre_apoderado_legal" value={{nombre_apoderado_legal}} name="nombre_apoderado_legal">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre_contraparte">Nombre contraparte juridica</label>
+                        <input readonly type="text" class="form-control" id="nombre_contraparte_juridica" value={{nombre_contraparte_juridica}} name="nombre_contraparte_juridica">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="rfc_contraparte">RFC contraparte juridica</label>
+                        <input readonly type="text" class="form-control" id="rfc_contraparte" value={{rfc_contraparte}} name="rfc_contraparte">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="domicilio_contraparte">Domicilio contraparte</label>
+                        <input readonly type="text" class="form-control" id="domicilio_contraparte" value={{domicilio_contraparte}} name="domicilio_contraparte">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="antecedentes">Antecedentes</label>
+                        <input readonly type="text" class="form-control" id="antecedentes" value={{antecedentes}} name="antecedentes">
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="tipo_instrumento">Tipo de instrumento</label>
+                    <input readonly type="text" class="form-control" id="tipo_instrumento" value={{tipo_instrumento}} name="tipo_instrumento">
+                </div>
+
+                <div class="mb-3">
+                    <label for="vigencia">Vigencia</label>
+                    <input readonly type="text" class="form-control" id="vigencia" value={{vigencia}} name="vigencia">
+                </div>
+                <div class="mb-3">
+                    <label for="objeto">Objeto</label>
+                    <input readonly type="text" class="form-control" id="objeto" value={{objeto}} name="objeto">
+                </div>
+                <div class="mb-3">
+                    <label for="contraprestacion">Contraprestacion</label>
+                    <input readonly type="text" class="form-control" id="contraprestacion" value={{contraprestacion}} name="contraprestacion">
+                </div>
+
+                <br>
+                
+                <hr class="mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        Estatus de contrato
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-primary" role="alert">
+                            Estatus de contrato
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

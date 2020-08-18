@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 })
 export class ProcesoContratosComponent {
 
-
+ 
   public contactForm: FormGroup;
 
 
@@ -31,6 +31,7 @@ export class ProcesoContratosComponent {
   public variables2 = {
     "variables": {
       "empresa": { "value": "nombre", "type": "String" },
+      "nombre_solicitante": { "value": "nombre", "type": "String" },
       "area_solicitante": { "value": "area", "type": "String" },
       "nombre_responsable_area": { "value": "area", "type": "String" },
       "nombre_apoderado_legal": { "value": "area", "type": "String" },
@@ -49,6 +50,7 @@ export class ProcesoContratosComponent {
     this.contactForm = this.createForm();
   }
   get empresa() { return this.contactForm.get('empresa'); }
+  get nombre_solicitante() { return this.contactForm.get('nombre_solicitante'); }
   get area_solicitante() { return this.contactForm.get('area_solicitante'); }
   get nombre_responsable_area() { return this.contactForm.get('nombre_responsable_area'); }
   get nombre_apoderado_legal() { return this.contactForm.get('nombre_apoderado_legal'); }
@@ -64,6 +66,7 @@ export class ProcesoContratosComponent {
   createForm() {
     return new FormGroup({
       empresa: new FormControl('', [Validators.required]),
+      nombre_solicitante: new FormControl('', [Validators.required]),
       area_solicitante: new FormControl('', [Validators.required]),
       nombre_responsable_area: new FormControl('', [Validators.required]),
       nombre_apoderado_legal: new FormControl('', [Validators.required]),
@@ -77,6 +80,7 @@ export class ProcesoContratosComponent {
       contraprestacion: new FormControl('', [Validators.required])
     });
   }
+
   onResetForm(): void {
     console.log("dfgre")
     this.contactForm.reset();
@@ -91,6 +95,7 @@ export class ProcesoContratosComponent {
     console.log(this.contactForm.valid)
     if (this.contactForm.valid) {
       this.variables2.variables.empresa.value = this.contactForm.value.empresa;
+      this.variables2.variables.nombre_solicitante.value = this.contactForm.value.nombre_solicitante;
       this.variables2.variables.area_solicitante.value = this.contactForm.value.area_solicitante;
       this.variables2.variables.nombre_responsable_area.value = this.contactForm.value.nombre_responsable_area;
       this.variables2.variables.nombre_apoderado_legal.value = this.contactForm.value.nombre_apoderado_legal;

@@ -88,6 +88,7 @@ export class ServiceService {
       variables:
       {
         empresa : { value : string; type: string;};
+        nombre_solicitante : { value : string; type: string;};
         area_solicitante : { value : string; type: string;};
         nombre_responsable_area : { value : string; type: string;};
         nombre_apoderado_legal : { value : string; type: string;};

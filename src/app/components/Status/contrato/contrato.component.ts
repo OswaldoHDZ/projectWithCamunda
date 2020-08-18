@@ -13,7 +13,20 @@ export class ContratoComponent implements OnInit {
   mensaje: string;
 
 
-  id : string;
+  id: string;
+  empresa: string;
+  nombre_solicitante : string;
+  area_solicitante: string;
+  nombre_responsable_area: string;
+  nombre_apoderado_legal: string;
+  nombre_contraparte_juridica: string;
+  rfc_contraparte: string;
+  domicilio_contraparte: string;
+  antecedentes: string;
+  tipo_instrumento: string;
+  vigencia: string;
+  objeto: string;
+  contraprestacion: string;
   constructor(private dataSvc: ServiceService, private route: ActivatedRoute) {
 
   }
@@ -21,7 +34,23 @@ export class ContratoComponent implements OnInit {
   ngOnInit() {
     this.dataSvc.enviarMensajeObservable.subscribe(response => {
       this.mensaje = response;
-      this.dataSvc.pasarIDdeContrato(response.toString() ).subscribe(data => console.log(data));
+      this.dataSvc.pasarIDdeContrato(response.toString()).subscribe(data => {
+        console.log("ESTAS EN VALUE",data.empresa.value)
+        this.empresa = data.empresa.value;
+        this.nombre_solicitante = data.nombre_solicitante.value;
+        this.area_solicitante = data.area_solicitante.value;
+        this.nombre_responsable_area = data.nombre_responsable_area.value;
+        this.nombre_apoderado_legal = data.nombre_apoderado_legal.value;
+        this.nombre_contraparte_juridica = data.nombre_contraparte_juridica.value;
+        this.rfc_contraparte = data.rfc_contraparte.value;
+        this.domicilio_contraparte = data.domicilio_contraparte.value;
+        this.antecedentes = data.antecedentes.value;
+        this.tipo_instrumento = data.tipo_instrumento.value;
+        this.vigencia = data.vigencia.value;
+        this.objeto = data.objeto.value;
+        this.contraprestacion = data.contraprestacion.value;
+        console.log("wevweew");
+      });
 
 
     });
@@ -35,11 +64,11 @@ export class ContratoComponent implements OnInit {
     // this.dataSvc.pasarIDdeContrato('/engine-rest/process-instance/'+this.mensaje+'/variables' ).subscribe
     //   (data => console.log("Estas en contrato",data)
     // );
-    
+
   }
 
   ngOnChanges(): void {
-    
+
   }
   //   // console.log("Se cargo el contrato ----")
   //   // console.log("$$$$$$$$",this.dataSvc.getIdContrato());
