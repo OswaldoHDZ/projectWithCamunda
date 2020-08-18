@@ -10,12 +10,18 @@ import { ServiceService } from "src/app/services/service.service"
   styleUrls: ['./slider.component.css']
 })
 export class SliderComponent implements OnInit {
-  names : string [];
+
+
+
+
+  names: string[];
   public cantidadAPI;
   public infoContratos;
+
+  mensaje: string;
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataSvc: ServiceService) {
 
-    this.names = ['Oswaldo','Josue']
+    this.names = ['Oswaldo', 'Josue']
     this.mobileQuery = media.matchMedia('(max-width: 800px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -23,7 +29,11 @@ export class SliderComponent implements OnInit {
 
   mobileQuery: MediaQueryList;
   ngOnInit() {
+    this.dataSvc.enviarMensajeObservable.subscribe(response => {
+      this.mensaje = response;
+    });
 
+     
     console.log("Se cargo la barra");
 
     // this.dataSvc.obtenerCantidadRevinicial().subscribe(data => (this.fillerNav[2].cantidad = data.count));
@@ -31,7 +41,7 @@ export class SliderComponent implements OnInit {
     // this.dataSvc.getInfoContrato().subscribe(data => console.log(this.listaDeTramites[0].contratos = data));
     // this.dataSvc.getInfoContrato().subscribe(data => console.log(this.tramitesEnprogreso[0].contratos = data[0].created));
 
-    this.dataSvc.getInfoContrato().subscribe(data => console.log(this.fillerNav[1].progresos = data));
+    this.dataSvc.getInfoContrato().subscribe(data => console.log("Estos son los progresos ",this.fillerNav[1].progresos = data));
     this.dataSvc.getInfoContrato().subscribe(data => console.log(this.fillerNav[3].progresos = data));
 
 
@@ -39,6 +49,11 @@ export class SliderComponent implements OnInit {
 
 
   }
+  HelloCorp(mensaje: string) {
+    this.dataSvc.enviarMensjae(mensaje);
+    // this.dataSvc.pasarIDdeContrato(value);
+  }
+
   // fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
 
@@ -56,7 +71,7 @@ export class SliderComponent implements OnInit {
   ]
 
   listaDeTramitesQuePuedenAtenderse = { route: "contrato", icon: 'description' };
-  
+
 
   tramitesQuePuedenAtendence = [
   ]
@@ -72,12 +87,8 @@ export class SliderComponent implements OnInit {
 
   public corporationObj;
 
-  
-  HelloCorp(value :string) {
-    console.log("My input: ",value);
-    this.dataSvc.pasarIDdeContrato(value);   
-  }
-  
+
+
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   private _mobileQueryListener: () => void;
 

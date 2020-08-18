@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs/internal/Observable'
 import { ContratoInterface } from '../shared/models/contrato.interface'
+import { Subject } from 'rxjs';
 
 
 const httpOption = {
@@ -17,7 +18,7 @@ const url_api_get_cantidad_contatos_a_revisar = '/engine-rest/task/count?process
 const url_api_info_revInicial = '/engine-rest/task?processDefinitionKey=ProcesoContratos'
 
 
-let url_api_obtener_Info_porinstancia =  '';
+const url_api_obtener_Info_porinstancia =  "/engine-rest/process-instance/2ea28dc8-dec5-11ea-9eb7-287fcfe23944/variables"
 
 @Injectable()
 export class ServiceService {
@@ -26,28 +27,53 @@ export class ServiceService {
   public empresa: string;
   public area_solicitante: string;
 
+
+  mensaje :string;
+  private enviarMensajeSubject = new Subject<string>();
+  enviarMensajeObservable = this.enviarMensajeSubject.asObservable();
+
+  enviarMensjae(mensaje : string){
+    this.mensaje = mensaje;
+    this.enviarMensajeSubject.next(mensaje);
+  }
+
+  id :string;
+  private enviarIdSubject = new Subject<string>();
+  enviarIDObservable = this.enviarMensajeSubject.asObservable();
+
+  enviarId(id : string){
+    this.mensaje = id;
+    this.enviarMensajeSubject.next(id);
+    return this.http.get(id,httpOption);
+  }
+
+
+
+
   getAllbooks(variabe: { variables: { amount: { value: number; type: string; }; item: { value: string; }; }; }): Observable<any> {
     console.log(variabe);
     return this.http.post(url_api, variabe, httpOption);
   }
 
-  public idContrato : string;
-  pasarIDdeContrato(numero : string){
-    console.log("Estas en el servicio")
-    url_api_obtener_Info_porinstancia =  "/engine-rest/process-instance/"+numero+"/variables"
-    console.log(url_api_obtener_Info_porinstancia)
-    
-  }
-  getIdContrato(){
-    console.log("Esta es la API", url_api_obtener_Info_porinstancia)
-    return url_api_obtener_Info_porinstancia;
-  }
-  // getVariablesPorId():Observable<any>{
-  //   console.log("Estas en get varible")
-  //   return this.http.get(this.idContrato,httpOption);
-  // }
+  getVriablesPorId():Observable<any>{
 
-  
+    
+    const url_api = "/engine-rest/process-instance/2ea28dc8-dec5-11ea-9eb7-287fcfe23944/variables"
+    return this.http.get(url_api,httpOption);
+  }
+
+  pasarIDdeContrato(id  : string): Observable<any>{
+    
+    let url = "/engine-rest/process-instance/2ea28dc8-dec5-11ea-9eb7-287fcfe23944/variables";
+    let otro = "/engine-rest/process-instance/"+id.toString()+"/variables";
+
+
+    let casa = otro.toString();
+    console.log("Estas en pasarporId ", typeof(url))
+    console.log("Estas en pasarporId ", typeof(otro))
+    return this.http.get(casa,httpOption);
+
+  }
   obtenerCantidadRevinicial(): Observable<any> {
     return this.http.get(url_api_get_cantidad_contatos_a_revisar,httpOption);
   }

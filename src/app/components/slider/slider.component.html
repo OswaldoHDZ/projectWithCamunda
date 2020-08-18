@@ -34,12 +34,12 @@
 
                             <!-- ----------------------------------------------------------------------------------                            -->
                             <mat-selection-list #progresos [multiple]="false" style="margin-left:15px;">
-                                <mat-list-option (click)="HelloCorp(progresos.selectedOptions.selected[0]?.value.id)"
+                                <mat-list-option (click)="HelloCorp(progresos.selectedOptions.selected[0]?.value.executionId)"
                                     *ngFor="let progreso of nav.progresos" [value]="progreso">
                                     
 
                                         <!-- <mat-list-item [routerLink]='listaDeTramitesQuePuedenAtenderse.route'> -->
-                                    <mat-list-item [routerLink]="['/'+listaDeTramitesQuePuedenAtenderse.route+'/', progresos.selectedOptions.selected[0]?.value.id]">
+                                    <mat-list-item [routerLink]="['/'+listaDeTramitesQuePuedenAtenderse.route+'/', progresos.selectedOptions.selected[0]?.value.executionId]">
 
                                         <mat-icon matBadgeColor="warn">label_important</mat-icon> {{progreso.name}}
                                     </mat-list-item>
