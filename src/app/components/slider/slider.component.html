@@ -36,7 +36,7 @@
                             <mat-selection-list #progresos [multiple]="false" style="margin-left:15px;">
                                 <mat-list-option (click)="HelloCorp(progresos.selectedOptions.selected[0]?.value.executionId)"
                                     *ngFor="let progreso of nav.progresos" [value]="progreso">
-                                    
+                                     <!-- prueba -->
 
                                         <!-- <mat-list-item [routerLink]='listaDeTramitesQuePuedenAtenderse.route'> -->
                                     <mat-list-item [routerLink]="['/'+listaDeTramitesQuePuedenAtenderse.route+'/', progresos.selectedOptions.selected[0]?.value.executionId]">
