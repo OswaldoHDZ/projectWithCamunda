@@ -8,7 +8,6 @@ const url_api_count = "/authorization/count/";
 
 const url_api = "/engine-rest/process-definition/key/payment-retrieval/start/"
 
-const url_api_crearProcesoGeneraContrato = "/engine-rest/process-definition/key/ProcesoContratos/start/"
 const httpOption ={
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 }
@@ -39,9 +38,9 @@ export class AuthService {
 		console.log(user);
 		return this.http.post(url_api_count,user,httpOption);
 	}
-	getAllbooks(variabe: { variables: { amount: { value: number; type: string; }; item: { value: string; }; }; }): Observable<any>{
-		console.log(variabe);
-		return this.http.post(url_api,variabe,httpOption);
-	}
+	// getAllbooks(variabe: { variables: { amount: { value: number; type: string; }; item: { value: string; }; }; }): Observable<any>{
+	// 	console.log(variabe);
+	// 	return this.http.post(url_api,variabe,httpOption);
+	// }
 
 }

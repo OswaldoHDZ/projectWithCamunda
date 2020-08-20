@@ -53,15 +53,15 @@ export class LoginComponent implements OnInit {
     console.log("123456")
     this.variables.variables.amount.value =1234567;
     this.variables.variables.item.value = 'qwertyuio'; 
-    this.authService.getAllbooks(this.variables).subscribe(
-      data =>{
-        console.log(data)
-      },
-      err =>{
-        console.log(err.error.message);
+    // this.authService.getAllbooks(this.variables).subscribe(
+    //   data =>{
+    //     console.log(data)
+    //   },
+    //   err =>{
+    //     console.log(err.error.message);
         
-            }
-    );
+    //         }
+    // );
     
   }
 }

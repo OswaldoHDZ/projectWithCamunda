@@ -10,15 +10,23 @@ const httpOption = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
 
-const url_api = "/engine-rest/process-definition/key/payment-retrieval/start/"
-const url_api_contrato = "/engine-rest/process-definition/key/ProcesoContratos/start/"
-
-const url_api_get_cantidad_contatos_a_revisar = '/engine-rest/task/count?processDefinitionKey=ProcesoContratos'
-
-const url_api_info_revInicial = '/engine-rest/task?processDefinitionKey=ProcesoContratos'
 
 
-const url_api_obtener_Info_porinstancia =  "/engine-rest/process-instance/2ea28dc8-dec5-11ea-9eb7-287fcfe23944/variables"
+//GET por processDefinitionKey 
+// const url_api_contrato = "/engine-rest/process-definition/key/ProcesoContratos/start/"
+// const url_api_get_cantidad_contatos_a_revisar = '/engine-rest/task/count?processDefinitionKey=ProcesoContratos'
+// const url_api_obtener_Info_porinstancia =  "/engine-rest/process-instance/2ea28dc8-dec5-11ea-9eb7-287fcfe23944/variables"
+// const url_api_info_revInicial = '/engine-rest/task?processDefinitionKey=ProcesoContratos'
+
+//Get por processDefinitionId
+
+
+const url_api_contrato = "/engine-rest/process-definition/key/ProcesoContratos/start/";
+const url_api_get_cantidad_contatos_a_revisar = '/engine-rest/task?processDefinitionId=ProcesoContratos:25:288c6136-e2e8-11ea-8717-287fcfe23944';
+const url_api_info_revInicial = '/engine-rest/task?processDefinitionId=ProcesoContratos:25:288c6136-e2e8-11ea-8717-287fcfe23944';
+
+
+
 
 @Injectable()
 export class ServiceService {
@@ -28,39 +36,30 @@ export class ServiceService {
   public area_solicitante: string;
 
 
-  mensaje :string;
+  mensaje: string;
   private enviarMensajeSubject = new Subject<string>();
   enviarMensajeObservable = this.enviarMensajeSubject.asObservable();
 
-  enviarMensjae(mensaje : string){
+  enviarMensjae(mensaje: string) {
     this.mensaje = mensaje;
     this.enviarMensajeSubject.next(mensaje);
   }
 
-  id :string;
+
+  id: string;
   private enviarIdSubject = new Subject<string>();
   enviarIDObservable = this.enviarMensajeSubject.asObservable();
 
-  enviarId(id : string){
+  enviarId(id: string) {
     this.mensaje = id;
     this.enviarMensajeSubject.next(id);
-    return this.http.get(id,httpOption);
+    return this.http.get(id, httpOption);
   }
 
-
-
-
-  getAllbooks(variabe: { variables: { amount: { value: number; type: string; }; item: { value: string; }; }; }): Observable<any> {
-    console.log(variabe);
-    return this.http.post(url_api, variabe, httpOption);
-  }
-
-  getVriablesPorId():Observable<any>{
-
-    
-    const url_api = "/engine-rest/process-instance/2ea28dc8-dec5-11ea-9eb7-287fcfe23944/variables"
-    return this.http.get(url_api,httpOption);
-  }
+  id_revisionLegal: string;
+  private enviarMensajeSubject_revisionLegal = new Subject<string>();
+  enviarMensajeObservable_revisionLegal = this.enviarMensajeSubject.asObservable();
+  
 
   pasarIDdeContrato(id  : string): Observable<any>{
     
@@ -74,32 +73,36 @@ export class ServiceService {
     return this.http.get(casa,httpOption);
 
   }
+
+
+
+
   obtenerCantidadRevinicial(): Observable<any> {
-    return this.http.get(url_api_get_cantidad_contatos_a_revisar,httpOption);
+    return this.http.get(url_api_get_cantidad_contatos_a_revisar, httpOption);
   }
-  getInfoContrato():Observable<any> {
-    return this.http.get(url_api_info_revInicial,httpOption) ;
+  getInfoContrato(): Observable<any> {
+    return this.http.get(url_api_info_revInicial, httpOption);
   }
 
 
 
-  crearProcesoGeneraContrato( variables2 :
+  crearProcesoGeneraContrato(variables2:
     {
       variables:
       {
-        empresa : { value : string; type: string;};
-        nombre_solicitante : { value : string; type: string;};
-        area_solicitante : { value : string; type: string;};
-        nombre_responsable_area : { value : string; type: string;};
-        nombre_apoderado_legal : { value : string; type: string;};
-        nombre_contraparte_juridica : { value : string; type: string;};
-        rfc_contraparte : { value : string; type: string;};
-        domicilio_contraparte : { value : string; type: string;};
-        antecedentes : { value : string; type: string;};
-        tipo_instrumento : { value : string; type: string;};
-        vigencia : { value : string; type: string;};
-        objeto : { value : string; type: string;};
-        contraprestacion : { value : string; type: string;};
+        empresa: { value: string; type: string; };
+        nombre_solicitante: { value: string; type: string; };
+        area_solicitante: { value: string; type: string; };
+        nombre_responsable_area: { value: string; type: string; };
+        nombre_apoderado_legal: { value: string; type: string; };
+        nombre_contraparte_juridica: { value: string; type: string; };
+        rfc_contraparte: { value: string; type: string; };
+        domicilio_contraparte: { value: string; type: string; };
+        antecedentes: { value: string; type: string; };
+        tipo_instrumento: { value: string; type: string; };
+        vigencia: { value: string; type: string; };
+        objeto: { value: string; type: string; };
+        contraprestacion: { value: string; type: string; };
       };
     }): Observable<any> {
     console.log(variables2);

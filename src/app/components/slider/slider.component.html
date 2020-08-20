@@ -18,7 +18,7 @@
                 <mat-sidenav [opened]="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                     [fixedInViewport]="mobileQuery.matches">
                     <mat-nav-list>
-                        <ng-container *ngFor="let nav of fillerNav">
+                        <ng-container *ngFor="let nav of fillerNav">                            
                             <mat-list-item>
                                 <mat-icon matBadge="{{nav.cantidad}}" matBadgeColor="warn">{{nav.icon}}</mat-icon>
                                 {{nav.name}}
@@ -32,21 +32,34 @@
                                 </div>
                             </mat-list>
 
-                            <!-- ----------------------------------------------------------------------------------                            -->
+                            <!-- Tramites en proceso----------------------------------------------------------------------------------                            -->
                             <mat-selection-list #progresos [multiple]="false" style="margin-left:15px;">
-                                <mat-list-option (click)="HelloCorp(progresos.selectedOptions.selected[0]?.value.executionId)"
+                                <mat-list-option
+                                    (click)="HelloCorp(progresos.selectedOptions.selected[0]?.value.executionId)"
                                     *ngFor="let progreso of nav.progresos" [value]="progreso">
-                                     <!-- prueba -->
-
-                                        <!-- <mat-list-item [routerLink]='listaDeTramitesQuePuedenAtenderse.route'> -->
-                                    <mat-list-item [routerLink]="['/'+listaDeTramitesQuePuedenAtenderse.route+'/', progresos.selectedOptions.selected[0]?.value.executionId]">
+                                    <!-- prueba -->
+                                    <!-- <mat-list-item [routerLink]='listaDeTramitesQuePuedenAtenderse.route'> -->
+                                    <mat-list-item
+                                        [routerLink]="['/'+status.route+'/', progresos.selectedOptions.selected[0]?.value.executionId]">
 
                                         <mat-icon matBadgeColor="warn">label_important</mat-icon> {{progreso.name}}
                                     </mat-list-item>
                                 </mat-list-option>
                             </mat-selection-list>
-                            <!-- ----------------------------------------------------------------------------------                            -->
+                            <!-- Pueden atenderce ----------------------------------------------------------------------------------                            -->
 
+                            <mat-selection-list #tramitesPuedeAtenderse [multiple]="false" style="margin-left:15px;">
+                                <mat-list-option
+                                    (click)="selectPuedeAtenderce(tramitesPuedeAtenderse.selectedOptions.selected[0]?.value.id,tramitesPuedeAtenderse.selectedOptions.selected[0]?.value.executionId)"
+                                    *ngFor="let tramite of nav.tramitesPuedeAtenderse" [value]="tramite">
+                                    <!-- prueba -->
+                                    <!-- <mat-list-item [routerLink]='listaDeTramitesQuePuedenAtenderse.route'> -->
+                                    <mat-list-item [routerLink]='tramiteAtenderce.route'>
+
+                                        <mat-icon matBadgeColor="warn">turned_in_not</mat-icon> {{tramite.name}}
+                                    </mat-list-item>
+                                </mat-list-option>
+                            </mat-selection-list>
 
                         </ng-container>
                     </mat-nav-list>

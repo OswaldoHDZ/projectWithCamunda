@@ -112,8 +112,8 @@ export class ProcesoContratosComponent {
           console.log(data);
           Swal.fire({
             icon: 'success',
-            title: 'Crear contrato',
-            text: 'El contrato se ha enviado a revisión con exito!',
+            title: 'Solicitud de Instrumentación Jurídica Estandarizada',
+            text: 'Tú solicitud se ha enviado a revisión con exito!',
             footer: ''
           })
         },
@@ -122,7 +122,7 @@ export class ProcesoContratosComponent {
           Swal.fire({
             icon: 'error',
             title: '¡AVISO!',
-            text: 'No se creo el contrato, consulta el area de soporte!',
+            text: 'Tu solicitud no se concreto, consulta el area de soporte!',
             footer: ''
           })
         }
@@ -144,15 +144,15 @@ export class ProcesoContratosComponent {
     console.log("123456")
     this.variables.variables.amount.value = this.amount;
     this.variables.variables.item.value = this.item;
-    this.data.getAllbooks(this.variables).subscribe(
-      data => {
-        console.log(data)
-      },
-      err => {
-        console.log(err.error.message);
+    // this.data.getAllbooks(this.variables).subscribe(
+    //   data => {
+    //     console.log(data)
+    //   },
+    //   err => {
+    //     console.log(err.error.message);
 
-      }
-    );
+    //   }
+    // );
 
   }
 

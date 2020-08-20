@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   fillerNav = [
-    { name: " Inicio Proceso Contratos", route: "proceso_contratos", icon: 'work' }
+    { name: " Solicitud de Instrumentación", route: "proceso_contratos", icon: 'work' }
   ]
 
   
