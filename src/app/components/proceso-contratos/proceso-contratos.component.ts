@@ -10,7 +10,7 @@ import Swal from 'sweetalert2'
 })
 export class ProcesoContratosComponent {
 
- 
+
   public contactForm: FormGroup;
 
 
@@ -42,7 +42,8 @@ export class ProcesoContratosComponent {
       "tipo_instrumento": { "value": "area", "type": "String" },
       "vigencia": { "value": "area", "type": "String" },
       "objeto": { "value": "area", "type": "String" },
-      "contraprestacion": { "value": "area", "type": "String" }
+      "contraprestacion": { "value": "area", "type": "String" },
+      "aprobacion": { "value": false, "type": Boolean }
     }
   }
 

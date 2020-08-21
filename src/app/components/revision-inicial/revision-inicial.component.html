@@ -1,7 +1,7 @@
 <div class="container">
     <div class="py-5 text-center">
-        <h1>Solicitud de Instrumentación Jurídica Estandarizada</h1>   
-        
+        <h1>Solicitud de Instrumentación Jurídica Estandarizada</h1>
+
 
 
     </div>
@@ -11,37 +11,51 @@
             <form class="needs-validation" novalidate>
                 <div class="mb-3">
                     <!-- <label for="email">Email <span class="text-muted">(Optional)</span></label> -->
-                    <label for="text">Empresa</label>
-                    <input readonly type="text" class="form-control" id="empresa">
+                    <div>
+                        <label for="text">Empresa</label>
+                        <input readonly  type="text" class="form-control" value={{empresa}}
+                            id="empresa" >
+                    </div>
                     <!-- <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
                     </div> -->
                 </div>
                 <div class="mb-3">
                     <label for="text">Area Solicitante</label>
-                    <input readonly type="text" class="form-control" id="area_solicitante">
+                    <input readonly type="text" class="form-control" value={{area_solicitante}} id="area_solicitante">
                 </div>
 
                 <div class="mb-3">
                     <label for="nombre_solicitante">Nombre Solicitante</label>
-                    <input readonly type="text" class="form-control" id="nombre_solicitante">
+                    <input readonly type="text" class="form-control" value={{nombre_solicitante}}
+                        id="nombre_solicitante">
                 </div>
 
                 <div class="mb-3">
                     <label for="objeto">Objeto</label>
-                    <input readonly type="text" class="form-control" id="objeto">
+                    <input readonly type="text" class="form-control" value={{objeto}} id="objeto">
                 </div>
                 <div class="mb-3">
                     <label for="contraprestacion">Contraprestacion</label>
-                    <input readonly type="text" class="form-control" id="contraprestacion">
+                    <input readonly type="text" class="form-control" value={{contraprestacion}} id="contraprestacion">
                 </div>
                 <div class="mb-3">
                     <label for="comentarios">Comantario</label>
-                    <textarea type="text" class="form-control" id="comentarios"></textarea>
+                    <textarea [(ngModel)]="comentarioRevLegal" type="text" class="form-control" name="comentario"
+                        id="comentarios"></textarea>
                 </div>
-
                 <br>
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                <div class="row">
+                    <div class="col-8">
+                        <button class="btn btn-success btn-lg btn-block" (click)="procesarSolicitud()"
+                            type="submit">Enviar a
+                            revision regal</button>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-danger btn-lg btn-block" (click)="modificarSolicitud()" type="submit">Enviar a
+                            modificación</button>
+                    </div>
+                </div>
                 <hr class="mb-4">
 
 
@@ -52,7 +66,7 @@
                     <div class="card-body">
                         <div class="alert alert-primary" role="alert">
                             Estatus de contrato
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <br>
@@ -61,4 +75,3 @@
     </div>
 
 </div>
-

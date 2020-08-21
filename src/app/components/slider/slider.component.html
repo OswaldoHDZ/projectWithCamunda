@@ -54,11 +54,18 @@
                                     *ngFor="let tramite of nav.tramitesPuedeAtenderse" [value]="tramite">
                                     <!-- prueba -->
                                     <!-- <mat-list-item [routerLink]='listaDeTramitesQuePuedenAtenderse.route'> -->
-                                    <mat-list-item [routerLink]='tramiteAtenderce.route'>
-
-                                        <mat-icon matBadgeColor="warn">turned_in_not</mat-icon> {{tramite.name}}
-                                    </mat-list-item>
+                                    <div *ngIf="tramite.name == 'Revisión inicial'">
+                                        <mat-list-item [routerLink]='tramiteAtenderce.route'>
+                                            <mat-icon matBadgeColor="warn">turned_in_not</mat-icon> {{tramite.name}}
+                                        </mat-list-item>
+                                    </div>
+                                    <div *ngIf="tramite.name == 'Revision Legal'">
+                                        <mat-list-item [routerLink]='tramiteLegal.route'>
+                                            <mat-icon matBadgeColor="warn">turned_in_not</mat-icon> {{tramite.name}}
+                                        </mat-list-item>
+                                    </div>
                                 </mat-list-option>
+                                
                             </mat-selection-list>
 
                         </ng-container>

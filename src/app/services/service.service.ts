@@ -1,16 +1,12 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs/internal/Observable'
-import { ContratoInterface } from '../shared/models/contrato.interface'
 import { Subject } from 'rxjs';
 
 
 const httpOption = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 }
-
-
 
 //GET por processDefinitionKey 
 // const url_api_contrato = "/engine-rest/process-definition/key/ProcesoContratos/start/"
@@ -19,12 +15,8 @@ const httpOption = {
 // const url_api_info_revInicial = '/engine-rest/task?processDefinitionKey=ProcesoContratos'
 
 //Get por processDefinitionId
-
-
 const url_api_contrato = "/engine-rest/process-definition/key/ProcesoContratos/start/";
-const url_api_get_cantidad_contatos_a_revisar = '/engine-rest/task?processDefinitionId=ProcesoContratos:25:288c6136-e2e8-11ea-8717-287fcfe23944';
-const url_api_info_revInicial = '/engine-rest/task?processDefinitionId=ProcesoContratos:25:288c6136-e2e8-11ea-8717-287fcfe23944';
-
+const url_api_contrato_ID = '/engine-rest/task?processDefinitionId=ProcesoContratos:25:288c6136-e2e8-11ea-8717-287fcfe23944';
 
 
 
@@ -32,10 +24,6 @@ const url_api_info_revInicial = '/engine-rest/task?processDefinitionId=ProcesoCo
 export class ServiceService {
 
   constructor(private http: HttpClient) { }
-  public empresa: string;
-  public area_solicitante: string;
-
-
   mensaje: string;
   private enviarMensajeSubject = new Subject<string>();
   enviarMensajeObservable = this.enviarMensajeSubject.asObservable();
@@ -44,12 +32,7 @@ export class ServiceService {
     this.mensaje = mensaje;
     this.enviarMensajeSubject.next(mensaje);
   }
-
-
-  id: string;
-  private enviarIdSubject = new Subject<string>();
   enviarIDObservable = this.enviarMensajeSubject.asObservable();
-
   enviarId(id: string) {
     this.mensaje = id;
     this.enviarMensajeSubject.next(id);
@@ -73,40 +56,59 @@ export class ServiceService {
     return this.http.get(casa,httpOption);
 
   }
-
-
-
-
   obtenerCantidadRevinicial(): Observable<any> {
-    return this.http.get(url_api_get_cantidad_contatos_a_revisar, httpOption);
+    return this.http.get(url_api_contrato_ID, httpOption);
   }
   getInfoContrato(): Observable<any> {
-    return this.http.get(url_api_info_revInicial, httpOption);
+    return this.http.get(url_api_contrato_ID, httpOption);
+  }
+  crearProcesoGeneraContrato(variables2
+    // :
+    // {
+    //   variables:
+    //   {
+    //     empresa: { value: string; type: string; };
+    //     nombre_solicitante: { value: string; type: string; };
+    //     area_solicitante: { value: string; type: string; };
+    //     nombre_responsable_area: { value: string; type: string; };
+    //     nombre_apoderado_legal: { value: string; type: string; };
+    //     nombre_contraparte_juridica: { value: string; type: string; };
+    //     rfc_contraparte: { value: string; type: string; };
+    //     domicilio_contraparte: { value: string; type: string; };
+    //     antecedentes: { value: string; type: string; };
+    //     tipo_instrumento: { value: string; type: string; };
+    //     vigencia: { value: string; type: string; };
+    //     objeto: { value: string; type: string; };
+    //     contraprestacion: { value: string; type: string; };
+    //     aprobacion: { value: false; type: Boolean; };
+    //   };
+    // }
+    ): Observable<any> {
+    console.log(variables2);
+    return this.http.post(url_api_contrato, variables2, httpOption);
+  }
+
+  enviarARevisionLegal(variables, id : string): Observable<any> {
+    let otro = "/engine-rest/task/"+id.toString()+"/complete";
+    return this.http.post(otro, variables, httpOption);
   }
 
 
+  // ------------------ Esto lo vamos a ocupar para mostrar revisiónes de ocntrato ----------------
+  id_Revision : string;
+  executionId_Revision : string; 
+  private revisionMensajeSubjet_ID = new Subject<string>();
+  private revisionMensajeSubjet_EXCUTION = new Subject<string>();
+  revisionObservable_ID = this.revisionMensajeSubjet_ID.asObservable();
+  revisionObservable_EXCUTION = this.revisionMensajeSubjet_EXCUTION.asObservable();
 
-  crearProcesoGeneraContrato(variables2:
-    {
-      variables:
-      {
-        empresa: { value: string; type: string; };
-        nombre_solicitante: { value: string; type: string; };
-        area_solicitante: { value: string; type: string; };
-        nombre_responsable_area: { value: string; type: string; };
-        nombre_apoderado_legal: { value: string; type: string; };
-        nombre_contraparte_juridica: { value: string; type: string; };
-        rfc_contraparte: { value: string; type: string; };
-        domicilio_contraparte: { value: string; type: string; };
-        antecedentes: { value: string; type: string; };
-        tipo_instrumento: { value: string; type: string; };
-        vigencia: { value: string; type: string; };
-        objeto: { value: string; type: string; };
-        contraprestacion: { value: string; type: string; };
-      };
-    }): Observable<any> {
-    console.log(variables2);
-    return this.http.post(url_api_contrato, variables2, httpOption);
+  enviarRevision(id_Revision : string, executionId_Revision :string){
+    this.id_Revision = id_Revision;
+    this.executionId_Revision = executionId_Revision;
+
+    this.revisionMensajeSubjet_ID.next(id_Revision);
+    this.revisionMensajeSubjet_EXCUTION.next(executionId_Revision);
+    
   }
 
 }
