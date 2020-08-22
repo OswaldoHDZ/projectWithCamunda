@@ -51,11 +51,7 @@ export class RevisionLegalComponent implements OnInit {
         this.vigencia = data.vigencia.value;
         this.objeto = data.objeto.value;
         this.contraprestacion = data.contraprestacion.value;
-        if (data.comentarioRevInicial.value){
-          console.log(data.comentarioRevInicial.value)
-        }
-        
-        
+        this.comentarioRevInicial = data.comentarioRevInicial.value;  
         // console.log("wevweew");
       });
     });
@@ -103,7 +99,7 @@ export class RevisionLegalComponent implements OnInit {
 
 
       this.variables.variables.comentarioRevInicial.value = this.comentarioRevInicial;
-      this.variables.variables.comentarioRevInicial.value = this.comentarioRevLegal;
+      this.variables.variables.comentarioRevLegal.value = this.comentarioRevLegal;
 
       this.dataSvc.enviarARevisionLegal(this.variables,this.id_RevisionLegal).subscribe(
         data => {
