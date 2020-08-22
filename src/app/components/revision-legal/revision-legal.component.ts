@@ -37,7 +37,7 @@ export class RevisionLegalComponent implements OnInit {
     this.dataSvc.revisionObservable_EXCUTION_Legal.subscribe(response => {
       this.executionId_RevisionLegal = response;
       this.dataSvc.pasarIDdeContrato(response.toString()).subscribe(data => {
-        console.log("ESTAS EN VALUE", data.empresa.value)
+        console.log("ESTAS EN VALUE/////", data.empresa.value)
         this.empresa = data.empresa.value;
         this.nombre_solicitante = data.nombre_solicitante.value;
         this.area_solicitante = data.area_solicitante.value;

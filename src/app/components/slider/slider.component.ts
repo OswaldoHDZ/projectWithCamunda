@@ -1,20 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ServiceService } from "src/app/services/service.service"
-import { stringify } from '@angular/compiler/src/util';
-
-
-
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.css']
 })
 export class SliderComponent implements OnInit {
-
-
-
-
   names: string[];
   public cantidadAPI;
   public infoContratos;
@@ -29,6 +21,13 @@ export class SliderComponent implements OnInit {
   id_RevisionLegal: string;
   executionId_RevisionLegal: string;
 
+  id_RevisionContrato: string;
+  executionId_RevisionContrato: string;
+
+
+  var1 : string;
+  var2 : string;
+
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataSvc: ServiceService) {
 
@@ -41,8 +40,6 @@ export class SliderComponent implements OnInit {
   mobileQuery: MediaQueryList;
 
   name = 'name';
-  routeRevLegal = 'SolicitudProcesoContratos-2'
-  routeRevInicial = 'SolicitudProcesoContratos-1'
 
 
   ngOnInit() {
@@ -53,6 +50,16 @@ export class SliderComponent implements OnInit {
 
     this.dataSvc.revisionObservable_ID_Legal.subscribe(response => { this.id_RevisionLegal = response; });
     this.dataSvc.revisionObservable_EXCUTION_Legal.subscribe(response => { this.executionId_RevisionLegal = response; });
+
+    
+    this.dataSvc.revisionObservable_ID_Contrato.subscribe(response => { this.id_RevisionContrato = response; });
+    this.dataSvc.revisionObservable_EXCUTION_Contato.subscribe(response => { this.executionId_RevisionContrato = response; });
+
+
+
+    this.dataSvc.var1EnviarVarsObservable.subscribe(var1 => {this.var1 = var1;} );
+    this.dataSvc.var2EnviarVarsObservable.subscribe(var2 => {this.var2 = var2;} );
+
     // this.dataSvc.obtenerCantidadRevinicial().subscribe(data => (this.fillerNav[2].cantidad = data.count));
     // // this.dataSvc.obtenerCantidadRevinicial().subscribe(data => ( this.fillerNav[2].cantidad = data)  );
     // this.dataSvc.getInfoContrato().subscribe(data => console.log(this.listaDeTramites[0].contratos = data));
@@ -99,7 +106,8 @@ export class SliderComponent implements OnInit {
       //this.dataSvc.enviarMensjae(id);
     }
     if (name == 'Generar Contrato') {
-      console.log("Entro Generar Contrato")
+      console.log("Entro Generar Contrato ",name)
+      this.dataSvc.enviarVars(id, executionId);
       this.dataSvc.enviarGenerarContrato(id, executionId);
       //this.dataSvc.enviarMensjae(id);
     }
@@ -135,7 +143,7 @@ export class SliderComponent implements OnInit {
     { name: " Trámites", route: "", icon: 'assignment_ind', tramites: this.listaDeTramites },
     { name: " Trámites en proceso", route: "", icon: 'hourglass_empty', progresos: [] },
     { name: " Requieren atención", route: "", icon: 'assignment_late', cantidad: 1, contratos: [] },
-    { name: " Pueden atenderse", route: "solicitudProcesoContratos-1", icon: 'assignment_turned_in', tramitesPuedeAtenderse: [] }
+    { name: " Pueden atenderse", icon: 'assignment_turned_in', tramitesPuedeAtenderse: [] }
   ]
 
 
@@ -150,12 +158,4 @@ export class SliderComponent implements OnInit {
   }
   // shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
   shouldRun = true;
-
-  // ------------------ Esto lo vamos a ocupar para mostrar revisiónes de ocntrato ----------------
-
-
-
-
-
-
 }

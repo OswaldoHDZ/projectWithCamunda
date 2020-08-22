@@ -3,62 +3,69 @@
         <h1>Solicitud de Instrumentación Jurídica Estandarizada</h1>
         <h2>Generar contrato</h2>
     </div>
-
     <div class="row">
         <div class="col-md-12 order-md-1">
             <form class="needs-validation" novalidate>
-
                 <div class="mb-3">
                     <label for="nombre_responsable">Nombre Responsable Area</label>
-                    <input readonly type="text" class="form-control" id="nombre_responsable"  >
+                    <input readonly type="text" class="form-control" value={{nombre_responsable_area}}
+                        name="nombre_responsable_area" id="nombre_responsable_area">
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="nombre_contraparte_juridica">Nombre contraparte juridica</label>
-                        <input readonly type="text" class="form-control" id="nombre_contraparte_juridica">
+                        <input readonly type="text" class="form-control" value={{nombre_contraparte_juridica}}
+                            name="nombre_contraparte_juridica" id="nombre_contraparte_juridica">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="rfc_contraparte">RFC contraparte juridica</label>
-                        <input readonly type="text" class="form-control" id="rfc_contraparte">
+                        <input readonly type="text" class="form-control" value={{rfc_contraparte}}
+                            name="rfc_contraparte" id="rfc_contraparte">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="domicilio_contraparte">Domicilio contraparte</label>
-                        <input readonly type="text" class="form-control" id="domicilio_contraparte">
+                        <input readonly type="text" class="form-control" value={{domicilio_contraparte}}
+                            name="domicilio_contraparte" id="domicilio_contraparte">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="nombre_apoderado_legal">Nombre Rep/Apoderado legal</label>
-                    <input readonly type="text" class="form-control" id="nombre_apoderado_legal">
+                    <input readonly type="text" class="form-control" value={{nombre_apoderado_legal}}
+                        name="nombre_apoderado_legal" id="nombre_apoderado_legal">
                 </div>
-
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="antecedentes">Antecedentes</label>
-                        <input readonly type="text" class="form-control" id="antecedentes">
+                        <input readonly type="text" class="form-control" value={{antecedentes}} name="antecedentes"
+                            id="antecedentes">
                     </div>
-
                 </div>
-
                 <div class="mb-3">
                     <label for="tipo_instrumento">Tipo de instrumento</label>
-                    <input readonly type="text" class="form-control" id="tipo_instrumento">
+                    <input readonly type="text" class="form-control" value={{tipo_instrumento}} name="tipo_instrumento"
+                        id="tipo_instrumento">
                 </div>
-
                 <div class="mb-3">
                     <label for="vigencia">Vigencia</label>
-                    <input readonly type="text" class="form-control" id="vigencia">
+                    <input readonly type="text" class="form-control" value={{vigencia}} name="vigencia" id="vigencia">
                 </div>
                 <div class="mb-3">
                     <label for="objeto">Objeto</label>
-                    <input readonly type="text" class="form-control" id="objeto">
+                    <input readonly type="text" class="form-control" value={{objeto}} name="objeto" id="objeto">
                 </div>
                 <div class="mb-3">
                     <label for="contraprestacion">Contraprestacion</label>
-                    <input readonly type="text" class="form-control" id="contraprestacion">
+                    <input readonly type="text" class="form-control" value={{contraprestacion}} name="contraprestacion"
+                        id="contraprestacion">
                 </div>
-
                 <br>
-                <button class="btn btn-success btn-lg btn-block" type="submit">Continue to checkout</button>
+                <br>
+                <div class="row">
+                    <div class="col-8">
+                        <button class="btn btn-success btn-lg btn-block" (click)="procesarSolicitud()"
+                            type="submit">Enviar a revision de contrato</button>
+                    </div>
+                </div>
                 <hr class="mb-4">
 
                 <div class="card">

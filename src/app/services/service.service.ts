@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵConsole } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs/internal/Observable'
 import { Subject } from 'rxjs';
@@ -24,6 +24,8 @@ const url_api_contrato_ID = '/engine-rest/task?processDefinitionId=ProcesoContra
 export class ServiceService {
 
   constructor(private http: HttpClient) { }
+
+
   mensaje: string;
   private enviarMensajeSubject = new Subject<string>();
   enviarMensajeObservable = this.enviarMensajeSubject.asObservable();
@@ -139,11 +141,27 @@ export class ServiceService {
   revisionObservable_ID_Contrato = this.revisionMensajeSubjet_ID_Contrato.asObservable();
   revisionObservable_EXCUTION_Contato = this.revisionMensajeSubjet_EXCUTION_Contrato.asObservable();
   enviarGenerarContrato(id_RevisionContrato : string, executionId_RevisionContrato : string){
-    console.log("Estas en el servicio 3----------------");
+    
     this.id_RevisionContrato = id_RevisionContrato;
     this.executionId_RevisionContrato = executionId_RevisionContrato;
     this.revisionMensajeSubjet_ID_Legal.next(id_RevisionContrato);
     this.revisionMensajeSubjet_EXCUTION_Legal.next(executionId_RevisionContrato);
+  }
+
+
+  var1 : string;
+  var2 : string;
+  private var1EnviarMensajeSubject = new Subject<string>();
+  private var2EnviarMensajeSubject = new Subject<string>();
+  var1EnviarVarsObservable = this.var1EnviarMensajeSubject.asObservable();
+  var2EnviarVarsObservable = this.var2EnviarMensajeSubject.asObservable();
+
+  enviarVars(var1 : string , var2 : string) {
+
+    this.var1 = var1;
+    this.var1EnviarMensajeSubject.next(var1);
+    this.var2 = var2;
+    this.var2EnviarMensajeSubject.next(var2);
   }
 
 
