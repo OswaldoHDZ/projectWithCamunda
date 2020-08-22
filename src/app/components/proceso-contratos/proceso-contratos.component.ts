@@ -93,7 +93,7 @@ export class ProcesoContratosComponent {
   //   console.log(this.exito)
   // }
   crearContrato() {
-    console.log(this.contactForm.valid)
+    // console.log(this.contactForm.valid)
     if (this.contactForm.valid) {
       this.variables2.variables.empresa.value = this.contactForm.value.empresa;
       this.variables2.variables.nombre_solicitante.value = this.contactForm.value.nombre_solicitante;
@@ -110,7 +110,7 @@ export class ProcesoContratosComponent {
       this.variables2.variables.contraprestacion.value = this.contactForm.value.contraprestacion;
       this.data.crearProcesoGeneraContrato(this.variables2).subscribe(
         data => {
-          console.log(data);
+          // console.log(data);
           Swal.fire({
             icon: 'success',
             title: 'Solicitud de Instrumentación Jurídica Estandarizada',
@@ -119,7 +119,7 @@ export class ProcesoContratosComponent {
           })
         },
         err => {
-          console.log(err.error.message);
+          // console.log(err.error.message);
           Swal.fire({
             icon: 'error',
             title: '¡AVISO!',
@@ -140,9 +140,9 @@ export class ProcesoContratosComponent {
   }
 
   mandaInformacion() {
-    console.log(this.amount)
-    console.log(this.item)
-    console.log("123456")
+    // console.log(this.amount)
+    // console.log(this.item)
+    // console.log("123456")
     this.variables.variables.amount.value = this.amount;
     this.variables.variables.item.value = this.item;
     // this.data.getAllbooks(this.variables).subscribe(

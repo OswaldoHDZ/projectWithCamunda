@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   onLogin(){
     return this.authService.loginuser(this.user.user, this.user.password).subscribe(
       data => {
-      console.log(data);
     });
   }
 
@@ -48,9 +47,6 @@ export class LoginComponent implements OnInit {
 
   
   mandaInformacion (){
-    console.log(this.amount)
-    console.log(this.item)
-    console.log("123456")
     this.variables.variables.amount.value =1234567;
     this.variables.variables.item.value = 'qwertyuio'; 
     // this.authService.getAllbooks(this.variables).subscribe(

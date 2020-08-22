@@ -32,14 +32,14 @@ export class RevisionInicialComponent implements OnInit {
   objeto: string;
   contraprestacion: string;
 
-  comentarioRevLegal : string; 
+  comentarioRevInicial : string; 
 
   ngOnInit() {
-    this.dataSvc.revisionObservable_ID.subscribe(response => { this.id_Revision = response; });
+    this.dataSvc.revisionObservable_ID.subscribe(response => { this.id_Revision = response;console.log("AAAAAAAA") });
     this.dataSvc.revisionObservable_EXCUTION.subscribe(response => {
       this.executionId_Revision = response;
       this.dataSvc.pasarIDdeContrato(response.toString()).subscribe(data => {
-        console.log("ESTAS EN VALUE", data.empresa.value)
+        // console.log("ESTAS EN VALUE", data.empresa.value)
         this.empresa = data.empresa.value;
         this.nombre_solicitante = data.nombre_solicitante.value;
         this.area_solicitante = data.area_solicitante.value;
@@ -53,7 +53,7 @@ export class RevisionInicialComponent implements OnInit {
         this.vigencia = data.vigencia.value;
         this.objeto = data.objeto.value;
         this.contraprestacion = data.contraprestacion.value;
-        console.log("wevweew");
+        // console.log("wevweew");
       });
     });
   }
@@ -79,14 +79,14 @@ export class RevisionInicialComponent implements OnInit {
       "objeto": { "value": "area", "type": "String" },
       "contraprestacion": { "value": "area", "type": "String" },
       "aprobacion": { "value": true, "type": Boolean},
-      "comentarioRevLegal": { "value": "area", "type": "String" },
+      "comentarioRevInicial": { "value": "_", "type": "String" }
     }
   }
   procesarSolicitud() {
 
-    console.log("AQUIIIIIIIIII ", this.id_Revision)
-    console.log("OTROOOOOOOOO  ", this.executionId_Revision)
-    console.log("TTTTTTTTTTTT  ", this.comentarioRevLegal)
+    // console.log("AQUIIIIIIIIII ", this.id_Revision)
+    // console.log("OTROOOOOOOOO  ", this.executionId_Revision)
+    // console.log("TTTTTTTTTTTT  ", this.comentarioRevInicial)
     if (this.empresa) {
       this.variables.variables.empresa.value = this.empresa;
       this.variables.variables.nombre_solicitante.value = this.nombre_solicitante;
@@ -103,11 +103,11 @@ export class RevisionInicialComponent implements OnInit {
       this.variables.variables.contraprestacion.value = this.contraprestacion;
 
 
-      this.variables.variables.comentarioRevLegal.value = this.comentarioRevLegal;
+      this.variables.variables.comentarioRevInicial.value = this.comentarioRevInicial;
 
       this.dataSvc.enviarARevisionLegal(this.variables,this.id_Revision).subscribe(
         data => {
-          console.log(data);
+          // console.log(data);
           Swal.fire({
             icon: 'success',
             title: 'Solicitud de Instrumentación Jurídica Estandarizada',
@@ -116,7 +116,7 @@ export class RevisionInicialComponent implements OnInit {
           })
         },
         err => {
-          console.log(err.error.message);
+          // console.log(err.error.message);
           Swal.fire({
             icon: 'error',
             title: '¡AVISO!',
@@ -139,9 +139,9 @@ export class RevisionInicialComponent implements OnInit {
   }
   modificarSolicitud() {
 
-    console.log("AQUIIIIIIIIII ", this.id_Revision)
-    console.log("OTROOOOOOOOO  ", this.executionId_Revision)
-    console.log("TTTTTTTTTTTT  ", this.comentarioRevLegal)
+    // console.log("AQUIIIIIIIIII ", this.id_Revision)
+    // console.log("OTROOOOOOOOO  ", this.executionId_Revision)
+    // console.log("TTTTTTTTTTTT  ", this.comentarioRevInicial)
     if (this.empresa) {
       Swal.fire({
         icon: 'success',

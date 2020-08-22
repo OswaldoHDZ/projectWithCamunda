@@ -35,7 +35,7 @@ export class AuthService {
   }
 
 	login2(user : UserI): Observable<any>{
-		console.log(user);
+		// console.log(user);
 		return this.http.post(url_api_count,user,httpOption);
 	}
 	// getAllbooks(variabe: { variables: { amount: { value: number; type: string; }; item: { value: string; }; }; }): Observable<any>{

@@ -43,7 +43,6 @@ export class GererarContratoComponent implements OnInit {
 
   constructor(private data: ServiceService) {
     this.exito = "Se mando correctamente";
-    console.log("Componente cargado")
     console.log(this.exito)
   }
   ngOnInit(): void {

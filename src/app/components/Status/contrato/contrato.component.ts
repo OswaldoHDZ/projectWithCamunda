@@ -35,7 +35,6 @@ export class ContratoComponent implements OnInit {
     this.dataSvc.enviarMensajeObservable.subscribe(response => {
       this.mensaje = response;
       this.dataSvc.pasarIDdeContrato(response.toString()).subscribe(data => {
-        console.log("ESTAS EN VALUE",data.empresa.value)
         this.empresa = data.empresa.value;
         this.nombre_solicitante = data.nombre_solicitante.value;
         this.area_solicitante = data.area_solicitante.value;

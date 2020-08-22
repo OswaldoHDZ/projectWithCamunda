@@ -50,7 +50,7 @@
 
                             <mat-selection-list #tramitesPuedeAtenderse [multiple]="false" style="margin-left:15px;">
                                 <mat-list-option
-                                    (click)="selectPuedeAtenderce(tramitesPuedeAtenderse.selectedOptions.selected[0]?.value.id,tramitesPuedeAtenderse.selectedOptions.selected[0]?.value.executionId)"
+                                    (click)="selectPuedeAtenderce(tramitesPuedeAtenderse.selectedOptions.selected[0]?.value.id,tramitesPuedeAtenderse.selectedOptions.selected[0]?.value.executionId,tramitesPuedeAtenderse.selectedOptions.selected[0]?.value.name)"
                                     *ngFor="let tramite of nav.tramitesPuedeAtenderse" [value]="tramite">
                                     <!-- prueba -->
                                     <!-- <mat-list-item [routerLink]='listaDeTramitesQuePuedenAtenderse.route'> -->
@@ -61,6 +61,11 @@
                                     </div>
                                     <div *ngIf="tramite.name == 'Revision Legal'">
                                         <mat-list-item [routerLink]='tramiteLegal.route'>
+                                            <mat-icon matBadgeColor="warn">turned_in_not</mat-icon> {{tramite.name}}
+                                        </mat-list-item>
+                                    </div>
+                                    <div *ngIf="tramite.name == 'Generar Contrato'">
+                                        <mat-list-item [routerLink]='tramiteGenerarContrato.route'>
                                             <mat-icon matBadgeColor="warn">turned_in_not</mat-icon> {{tramite.name}}
                                         </mat-list-item>
                                     </div>
